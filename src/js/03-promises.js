@@ -17,6 +17,10 @@ function onSubmitForm(evt) {
   let amount = Number(form.elements.amount.value);
   let position = 1;
 
+  if (amount <= 0 || delay < 0 || step < 0) {
+    Notiflix.Notify.failure(` Please input correct values (>0)`);
+    return
+  }
 
   for (let i = position; i <= amount; i++) {
   createPromise(position, delay)

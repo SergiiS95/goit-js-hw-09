@@ -7,6 +7,7 @@ const days = document.querySelector('span[data-days]');
 const hours = document.querySelector('span[data-hours]');
 const minutes = document.querySelector('span[data-minutes]');
 const seconds = document.querySelector('span[data-seconds]');
+const input = document.querySelector('#datetime-picker');
 
 let selectedDate = 0;
 const options = {
@@ -26,13 +27,14 @@ const options = {
   },
 };
 
-flatpickr('#datetime-picker', options);
+flatpickr(input, options);
 
 start.setAttribute('disabled', '');
 start.addEventListener('click', onBtnClick);
 
 function onBtnClick() {
   let timer = setInterval(() => {
+    input.setAttribute('disabled', '');
     start.setAttribute('disabled', '');
     const timeDifference = selectedDate - new Date().getTime();
     if (timeDifference <= 0) {
